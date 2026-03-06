@@ -1,0 +1,257 @@
+/* Definición de variables CSS para la paleta de colores y diseño (Requisito punto 4) */
+:root {
+    --bg-body: #f0f4f8;
+    --white: #ffffff;
+    --blue-dark: #1e3a8a;
+    --blue-primary: #2563eb;
+    --blue-light: #eff6ff;
+    --blue-accent: #60a5fa;
+    --text-main: #334155;
+    --text-light: #f8fafc;
+    --shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1);
+    --radius: 16px;
+}
+
+/* Reseteo básico para eliminar márgenes y padding por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Configuración del fondo y tipografía global del documento */
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: system-ui, -apple-system, sans-serif;
+    padding: 2rem;
+}
+
+/* Estilos del encabezado principal con disposición flexbox */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid var(--blue-primary);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    max-width: 1200px;
+    margin-inline: auto;
+    color: var(--blue-dark);
+}
+
+/* Configuración del Grid principal y definición de áreas (Requisito punto 2) */
+.moodboard {
+    display: grid;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "intro intro tech interests"
+        "philo city-1 city-2 interests"
+        "projects projects projects projects";
+}
+
+/* Estilo base para las tarjetas con transiciones para el hover */
+.card {
+    background-color: var(--white);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto visual al pasar el ratón sobre las tarjetas (Requisito punto 4) */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.2);
+}
+
+/* Configuración de la tarjeta de introducción en el grid */
+.intro {
+    grid-area: intro;
+    background-color: var(--blue-primary);
+    color: var(--text-light);
+}
+
+/* Estilo de la barra decorativa superior en la intro */
+.intro-bar {
+    width: 100%;
+    height: 12px;
+    background-color: var(--white);
+    margin-bottom: 1.5rem;
+}
+
+/* Formato del título principal de la biografía */
+.intro h2 {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+/* Área asignada a la primera tarjeta de imagen técnica */
+.tech {
+    grid-area: tech;
+    padding: 1rem;
+}
+
+/* Área asignada a la sección lateral de intereses */
+.interests {
+    grid-area: interests;
+}
+
+/* Lista de intereses con espaciado flexible vertical */
+.interests ul {
+    list-style: none;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Área asignada a la tarjeta de frase o filosofía */
+.philosophy {
+    grid-area: philo;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Estilo de la cita textual con énfasis en color azul */
+.philosophy blockquote {
+    font-size: 1.2rem;
+    color: var(--blue-primary);
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+/* Área asignada a la primera imagen de paisaje */
+.city-1 {
+    grid-area: city-1;
+    padding: 1rem;
+}
+
+/* Área asignada a la segunda imagen (padel) */
+.city-2 {
+    grid-area: city-2;
+    padding: 1rem;
+}
+
+/* Ajuste de imágenes para cubrir el contenedor sin deformarse */
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: calc(var(--radius) - 8px);
+}
+
+/* Sección de proyectos con uso de ANIDAMIENTO (Requisito punto 4) */
+.projects {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    grid-area: projects;
+}
+
+/* Primer ejemplo de anidamiento (Nesting) */
+.projects {
+    & .projects-info {
+        flex: 1;
+        min-width: 250px;
+    }
+}
+
+/* Segundo ejemplo de anidamiento (Nesting) */
+.projects .project-links {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+
+    & .project-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+/* Estilo para las etiquetas de categoría en mayúsculas */
+.tag {
+    color: var(--blue-accent);
+    font-weight: bold;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-left: 3px solid var(--blue-accent);
+    padding-left: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+/* Diseño de botones tipo píldora con transiciones (Requisito punto 4) */
+.btn {
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+/* Cambio de color en el botón al pasar el ratón (Requisito punto 4) */
+.btn:hover {
+    background-color: var(--blue-primary);
+    color: var(--white);
+}
+
+/* Estilos para el pie de página obligatorio (Semántica estructural) */
+.main-footer {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--blue-accent);
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--blue-dark);
+}
+
+/* Media Query para Tablets: Reorganización del Grid (Requisito punto 3) */
+@media (max-width: 1024px) {
+    .moodboard {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+            "intro intro"
+            "tech interests"
+            "philo interests"
+            "city-1 city-2"
+            "projects projects";
+    }
+}
+
+/* Media Query para Móviles: Disposición en una sola columna (Requisito punto 3) */
+@media (max-width: 768px) {
+    .moodboard {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "intro"
+            "tech"
+            "interests"
+            "philo"
+            "city-1"
+            "city-2"
+            "projects";
+    }
+
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .projects {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
