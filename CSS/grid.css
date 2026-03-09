@@ -130,6 +130,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color:aliceblue;
 }
 
 /* Estilo de la cita textual con énfasis en color azul */
@@ -168,6 +169,7 @@ body {
     flex-wrap: wrap;
     gap: 2rem;
     grid-area: projects;
+    background-color:aliceblue;
 }
 
 /* Primer ejemplo de anidamiento (Nesting) */
@@ -206,7 +208,7 @@ body {
 
 /* Diseño de botones tipo píldora con transiciones (Requisito punto 4) */
 .btn {
-    background-color: var(--blue-light);
+    background-color:gainsboro;
     color: var(--blue-primary);
     text-decoration: none;
     padding: 0.5rem 1.5rem;
