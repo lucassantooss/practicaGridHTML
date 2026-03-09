@@ -25,6 +25,20 @@ body {
     color: var(--text-main);
     font-family: system-ui, -apple-system, sans-serif;
     padding: 2rem;
+    /* Ruta de la imagen (asegúrate de que el nombre coincida exactamente) */
+    background-image: url('../img/imagenFondo.jpg');
+
+    /* Fija la imagen para que no se mueva al hacer scroll */
+    background-attachment: fixed;
+
+    /* Centra la imagen */
+    background-position: center;
+
+    /* Evita que la imagen se repita si el contenido es muy largo */
+    background-repeat: no-repeat;
+
+    /* Escala la imagen para que cubra toda la pantalla sin deformarse */
+    background-size: cover;
 }
 
 /* Estilos del encabezado principal con disposición flexbox */
@@ -98,6 +112,7 @@ body {
 /* Área asignada a la sección lateral de intereses */
 .interests {
     grid-area: interests;
+    background-color:aliceblue;
 }
 
 /* Lista de intereses con espaciado flexible vertical */
