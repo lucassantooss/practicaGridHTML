@@ -1,4 +1,4 @@
-/* Definición de variables CSS para la paleta de colores y diseño (Requisito punto 4) */
+/* Definición de variables CSS */
 :root {
     --bg-body: #f0f4f8;
     --white: #ffffff;
@@ -12,36 +12,26 @@
     --radius: 16px;
 }
 
-/* Reseteo básico para eliminar márgenes y padding por defecto */
+/* Reseteo básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Configuración del fondo y tipografía global del documento */
 body {
     background-color: var(--bg-body);
     color: var(--text-main);
     font-family: system-ui, -apple-system, sans-serif;
     padding: 2rem;
-    /* Ruta de la imagen (asegúrate de que el nombre coincida exactamente) */
     background-image: url('../img/imagenFondo.jpg');
-
-    /* Fija la imagen para que no se mueva al hacer scroll */
     background-attachment: fixed;
-
-    /* Centra la imagen */
     background-position: center;
-
-    /* Evita que la imagen se repita si el contenido es muy largo */
     background-repeat: no-repeat;
-
-    /* Escala la imagen para que cubra toda la pantalla sin deformarse */
     background-size: cover;
 }
 
-/* Estilos del encabezado principal con disposición flexbox */
+/* Encabezado */
 .main-header {
     display: flex;
     justify-content: space-between;
@@ -54,7 +44,7 @@ body {
     color: var(--blue-dark);
 }
 
-/* Configuración del Grid principal y definición de áreas (Requisito punto 2) */
+/* Grid principal - CAMBIO: city-combined ocupa dos columnas */
 .moodboard {
     display: grid;
     max-width: 1200px;
@@ -63,11 +53,11 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
         "intro intro tech interests"
-        "philo city-1 city-2 interests"
+        "philo city-combined city-combined interests"
         "projects projects projects projects";
 }
 
-/* Estilo base para las tarjetas con transiciones para el hover */
+/* Tarjetas */
 .card {
     background-color: var(--white);
     border-radius: var(--radius);
@@ -76,20 +66,18 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efecto visual al pasar el ratón sobre las tarjetas (Requisito punto 4) */
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.2);
 }
 
-/* Configuración de la tarjeta de introducción en el grid */
+/* Secciones específicas */
 .intro {
     grid-area: intro;
     background-color: var(--blue-primary);
     color: var(--text-light);
 }
 
-/* Estilo de la barra decorativa superior en la intro */
 .intro-bar {
     width: 100%;
     height: 12px;
@@ -97,25 +85,16 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* Formato del título principal de la biografía */
-.intro h2 {
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-}
-
-/* Área asignada a la primera tarjeta de imagen técnica */
 .tech {
     grid-area: tech;
     padding: 1rem;
 }
 
-/* Área asignada a la sección lateral de intereses */
 .interests {
     grid-area: interests;
-    background-color:aliceblue;
+    background-color: aliceblue;
 }
 
-/* Lista de intereses con espaciado flexible vertical */
 .interests ul {
     list-style: none;
     margin-top: 1.5rem;
@@ -124,44 +103,36 @@ body {
     gap: 1.5rem;
 }
 
-/* Área asignada a la tarjeta de frase o filosofía */
 .philosophy {
     grid-area: philo;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color:aliceblue;
+    background-color: aliceblue;
 }
 
-/* Estilo de la cita textual con énfasis en color azul */
-.philosophy blockquote {
-    font-size: 1.2rem;
-    color: var(--blue-primary);
-    font-weight: bold;
-    margin-top: 1rem;
+/* Localiza esta sección y sustitúyela por esta */
+
+.city-combined {
+    grid-area: city-combined;
+    background-color: var(--white);
+    border-radius: var(--radius);
+    padding: 1rem;      /* <--- Esto iguala el marco al de la foto del portátil */
+    display: flex;
+    gap: 1rem;          /* Espacio central igual al marco exterior */
+    align-items: stretch;
 }
 
-/* Área asignada a la primera imagen de paisaje */
-.city-1 {
-    grid-area: city-1;
-    padding: 1rem;
-}
-
-/* Área asignada a la segunda imagen (padel) */
-.city-2 {
-    grid-area: city-2;
-    padding: 1rem;
-}
-
-/* Ajuste de imágenes para cubrir el contenedor sin deformarse */
-.image-card img {
-    width: 100%;
+.city-combined img {
+    width: 0;           /* Permite que flex-grow reparta el espacio */
+    flex-grow: 1;
     height: 100%;
+    min-height: 250px;  /* Ajusta según la altura que quieras */
     object-fit: cover;
-    border-radius: calc(var(--radius) - 8px);
+    border-radius: calc(var(--radius) - 8px); /* Mismo redondeado que el portátil */
 }
 
-/* Sección de proyectos con uso de ANIDAMIENTO (Requisito punto 4) */
+/* Proyectos con Nesting */
 .projects {
     display: flex;
     justify-content: space-between;
@@ -169,31 +140,27 @@ body {
     flex-wrap: wrap;
     gap: 2rem;
     grid-area: projects;
-    background-color:aliceblue;
-}
+    background-color: aliceblue;
 
-/* Primer ejemplo de anidamiento (Nesting) */
-.projects {
     & .projects-info {
         flex: 1;
         min-width: 250px;
     }
-}
 
-/* Segundo ejemplo de anidamiento (Nesting) */
-.projects .project-links {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-
-    & .project-item {
+    & .project-links {
         display: flex;
-        align-items: center;
-        gap: 1rem;
+        gap: 2rem;
+        flex-wrap: wrap;
+
+        & .project-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
     }
 }
 
-/* Estilo para las etiquetas de categoría en mayúsculas */
+/* Elementos comunes */
 .tag {
     color: var(--blue-accent);
     font-weight: bold;
@@ -206,9 +173,8 @@ body {
     display: inline-block;
 }
 
-/* Diseño de botones tipo píldora con transiciones (Requisito punto 4) */
 .btn {
-    background-color:gainsboro;
+    background-color: gainsboro;
     color: var(--blue-primary);
     text-decoration: none;
     padding: 0.5rem 1.5rem;
@@ -217,13 +183,11 @@ body {
     transition: all 0.3s;
 }
 
-/* Cambio de color en el botón al pasar el ratón (Requisito punto 4) */
 .btn:hover {
     background-color: var(--blue-primary);
     color: var(--white);
 }
 
-/* Estilos para el pie de página obligatorio (Semántica estructural) */
 .main-footer {
     max-width: 1200px;
     margin: 2rem auto 0;
@@ -234,7 +198,8 @@ body {
     color: var(--blue-dark);
 }
 
-/* Media Query para Tablets: Reorganización del Grid (Requisito punto 3) */
+/* --- RESPONSIVE --- */
+
 @media (max-width: 1024px) {
     .moodboard {
         grid-template-columns: repeat(2, 1fr);
@@ -242,12 +207,11 @@ body {
             "intro intro"
             "tech interests"
             "philo interests"
-            "city-1 city-2"
+            "city-combined city-combined"
             "projects projects";
     }
 }
 
-/* Media Query para Móviles: Disposición en una sola columna (Requisito punto 3) */
 @media (max-width: 768px) {
     .moodboard {
         grid-template-columns: 1fr;
@@ -256,9 +220,18 @@ body {
             "tech"
             "interests"
             "philo"
-            "city-1"
-            "city-2"
+            "city-combined"
             "projects";
+    }
+
+    /* En móvil, las fotos se ponen una debajo de otra */
+    .city-combined {
+        flex-direction: column;
+    }
+
+    .city-combined img {
+        width: 100%;
+        height: 200px; /* Altura fija para que no crezca demasiado en vertical */
     }
 
     .main-header {
