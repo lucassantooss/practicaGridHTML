@@ -18,6 +18,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* Reseteo de imágenes para evitar desbordamientos */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
 
 body {
     background-color: var(--bg-body);
