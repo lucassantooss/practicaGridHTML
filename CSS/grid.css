@@ -12,12 +12,13 @@
     --radius: 16px;
 }
 
-/* Reseteo básico */
+/* Reseteo básico para todos los elementos */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 /* Reseteo de imágenes para evitar desbordamientos */
 img {
     max-width: 100%;
@@ -25,6 +26,7 @@ img {
     display: block;
 }
 
+/* Estilos generales del cuerpo de la página, incluyendo fuente y fondo fijo */
 body {
     background-color: var(--bg-body);
     color: var(--text-main);
@@ -37,7 +39,7 @@ body {
     background-size: cover;
 }
 
-/* Encabezado */
+/* Encabezado: disposición flex y borde inferior */
 .main-header {
     display: flex;
     justify-content: space-between;
@@ -50,7 +52,7 @@ body {
     color: var(--blue-dark);
 }
 
-/* Grid principal - CAMBIO: city-combined ocupa dos columnas */
+/* Grid principal: define 4 columnas y las áreas del diseño */
 .moodboard {
     display: grid;
     max-width: 1200px;
@@ -63,7 +65,7 @@ body {
         "projects projects projects projects";
 }
 
-/* Tarjetas */
+/* Tarjetas: estilos base para los contenedores (fondo, bordes, sombra y transición) */
 .card {
     background-color: var(--white);
     border-radius: var(--radius);
@@ -72,18 +74,20 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Efecto de elevación y sombra al pasar el ratón sobre las tarjetas */
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.2);
 }
 
-/* Secciones específicas */
+/* Estilos para la tarjeta de introducción (fondo azul y texto claro) */
 .intro {
     grid-area: intro;
     background-color: var(--blue-primary);
     color: var(--text-light);
 }
 
+/* Barra decorativa blanca en la parte superior de la introducción */
 .intro-bar {
     width: 100%;
     height: 12px;
@@ -91,16 +95,19 @@ body {
     margin-bottom: 1.5rem;
 }
 
+/* Asignación de área y espaciado interno para la tarjeta de tecnología */
 .tech {
     grid-area: tech;
     padding: 1rem;
 }
 
+/* Asignación de área y color de fondo para la tarjeta de intereses */
 .interests {
     grid-area: interests;
     background-color: aliceblue;
 }
 
+/* Estilos para la lista de intereses (sin viñetas y con disposición flex en columna) */
 .interests ul {
     list-style: none;
     margin-top: 1.5rem;
@@ -109,6 +116,7 @@ body {
     gap: 1.5rem;
 }
 
+/* Centrado vertical y color de fondo para la tarjeta de filosofía */
 .philosophy {
     grid-area: philo;
     display: flex;
@@ -117,28 +125,28 @@ body {
     background-color: aliceblue;
 }
 
-/* Localiza esta sección y sustitúyela por esta */
-
+/* Contenedor flex para las imágenes combinadas (ocupa el área city-combined) */
 .city-combined {
     grid-area: city-combined;
     background-color: var(--white);
     border-radius: var(--radius);
-    padding: 1rem;      /* <--- Esto iguala el marco al de la foto del portátil */
+    padding: 1rem;
     display: flex;
-    gap: 1rem;          /* Espacio central igual al marco exterior */
+    gap: 1rem;
     align-items: stretch;
 }
 
+/* Ajuste de las imágenes combinadas para que compartan el espacio disponible equitativamente */
 .city-combined img {
-    width: 0;           /* Permite que flex-grow reparta el espacio */
+    width: 0;
     flex-grow: 1;
     height: 100%;
-    min-height: 250px;  /* Ajusta según la altura que quieras */
+    min-height: 250px;
     object-fit: cover;
-    border-radius: calc(var(--radius) - 8px); /* Mismo redondeado que el portátil */
+    border-radius: calc(var(--radius) - 8px);
 }
 
-/* Proyectos con Nesting */
+/* Contenedor principal de la sección de proyectos usando flexbox y asignando el área del grid */
 .projects {
     display: flex;
     justify-content: space-between;
@@ -148,16 +156,19 @@ body {
     grid-area: projects;
     background-color: aliceblue;
 
+    /* Área de información de los proyectos (título y etiqueta) */
     & .projects-info {
         flex: 1;
         min-width: 250px;
     }
 
+    /* Contenedor flex para los enlaces a los proyectos */
     & .project-links {
         display: flex;
         gap: 2rem;
         flex-wrap: wrap;
 
+        /* Alineación y espaciado de cada ítem de proyecto individual */
         & .project-item {
             display: flex;
             align-items: center;
@@ -166,7 +177,7 @@ body {
     }
 }
 
-/* Elementos comunes */
+/* Estilos visuales para las etiquetas identificativas (ej. INTERESES, FILOSOFÍA) */
 .tag {
     color: var(--blue-accent);
     font-weight: bold;
@@ -179,6 +190,7 @@ body {
     display: inline-block;
 }
 
+/* Estilos base para los botones de enlace (fondo, padding y bordes redondeados) */
 .btn {
     background-color: gainsboro;
     color: var(--blue-primary);
@@ -189,11 +201,13 @@ body {
     transition: all 0.3s;
 }
 
+/* Cambio de colores al pasar el ratón por los botones */
 .btn:hover {
     background-color: var(--blue-primary);
     color: var(--white);
 }
 
+/* Estilos del pie de página (centrado, tamaño de fuente y con borde superior) */
 .main-footer {
     max-width: 1200px;
     margin: 2rem auto 0;
@@ -206,7 +220,9 @@ body {
 
 /* --- RESPONSIVE --- */
 
+/* Adaptación del Grid para pantallas medianas (tablets) reduciendo a 2 columnas */
 @media (max-width: 1024px) {
+    /* Redefinición de las áreas del grid para 1024px */
     .moodboard {
         grid-template-columns: repeat(2, 1fr);
         grid-template-areas:
@@ -218,7 +234,9 @@ body {
     }
 }
 
+/* Adaptación del Grid para pantallas pequeñas (móviles) reduciendo a 1 sola columna */
 @media (max-width: 768px) {
+    /* Redefinición de las áreas del grid apiladas para 768px */
     .moodboard {
         grid-template-columns: 1fr;
         grid-template-areas:
@@ -230,22 +248,25 @@ body {
             "projects";
     }
 
-    /* En móvil, las fotos se ponen una debajo de otra */
+    /* En móvil, las fotos combinadas se apilan verticalmente */
     .city-combined {
         flex-direction: column;
     }
 
+    /* Ajuste de altura fija para las imágenes en móvil para que no crezcan demasiado */
     .city-combined img {
         width: 100%;
-        height: 200px; /* Altura fija para que no crezca demasiado en vertical */
+        height: 200px; 
     }
 
+    /* Apila el contenido del encabezado (nombre y curso) en móviles */
     .main-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem;
     }
     
+    /* Apila la información y los enlaces de la sección de proyectos en móviles */
     .projects {
         flex-direction: column;
         align-items: flex-start;
